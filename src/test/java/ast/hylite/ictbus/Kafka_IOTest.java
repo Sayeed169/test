@@ -18,10 +18,12 @@ public class Kafka_IOTest {
 
     @org.junit.Test
     public void get_records() {
-        kafka.get_records("", 0);
+        kafka.set_consumerproperties("test-group", 10, true);
+        kafka.get_records("test", 0);
     }
 
     @org.junit.Test
     public void send_records() {
+        kafka.send_records("devglan-test", Integer.toString(0), "test message");
     }
 }
