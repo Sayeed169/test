@@ -18,7 +18,8 @@ import java.util.Collections;
 import java.util.Properties;
 
 /**
- * Class for general data transfer using Apache Kafka Producer API, Consumer API and Streams API
+ * Class for general data transfer using Apache Kafka Producer API, Consumer API
+ * and Streams API
  *
  * @author kew
  */
@@ -34,6 +35,7 @@ public class Kafka_IO {
     private String clientid;
     private ArrayList<String> msg_keys = new ArrayList<String>();
     private ArrayList<String> msg_values = new ArrayList<String>();
+
     /**
      * Sources:
      * https://www.programcreek.com/java-api-examples/index.php?api=kafka.server.KafkaServer
@@ -51,7 +53,8 @@ public class Kafka_IO {
     }
 
     /**
-     * Set bootstrapservers for Kafka producer, consumer and streams API (e.g. "localhost:9092")
+     * Set bootstrapservers for Kafka producer, consumer and streams API (e.g.
+     * "localhost:9092")
      *
      * @param _bootstrapservers
      */
@@ -67,7 +70,7 @@ public class Kafka_IO {
         producerprops.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapservers);
         producerprops.put(ProducerConfig.ACKS_CONFIG, "all");
         producerprops.put(ProducerConfig.RETRIES_CONFIG, 0);
-        producerprops.put(ProducerConfig.CLIENT_ID_CONFIG, clientid);
+        // producerprops.put(ProducerConfig.CLIENT_ID_CONFIG, clientid);
         producerprops.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         producerprops.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
@@ -109,8 +112,8 @@ public class Kafka_IO {
     /**
      * Get records for a Kafka consumer
      *
-     * @param topic     - Kafka topic
-     * @param poll_time - time interval for polling [sec.]
+     * @param topic       - Kafka topic
+     * @param poll_time   - time interval for polling [sec.]
      * @param num_records - maximum number of records per poll operation [1]
      * @throws JSONException
      */
@@ -170,7 +173,6 @@ public class Kafka_IO {
         // Start producer
         set_producerproperties();
         Producer<String, String> producer = new KafkaProducer<String, String>(producerprops);
-
 
         try {
 
